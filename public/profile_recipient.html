@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Donar Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="script/angular.min.js"></script>
+    <style>
+      body
+      {
+          
+          background-color: bisque;
+          height: max-content;
+
+      }
+      #container
+      {
+        display: flex; 
+        flex-direction: column;
+      }
+      #email_align
+      {
+        display: flex;
+        flex-direction: row;
+      }
+      #N-C_id
+      {
+        display: flex;
+        justify-content: space-around;
+        
+      }
+      #D-G_id
+      {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 235px;
+       /* flex-direction: ;*/
+      }
+    </style>
+    <script>
+      function doPrev(refFile,prevImg)
+      {
+          const [file] = refFile.files
+          if (file) {
+            prevImg.src = URL.createObjectURL(file)
+          }
+      }
+      //=============================================
+      $(document).ready(function()
+      {
+
+
+        function setActiveUser()
+    {
+      var au=localStorage.getItem("activeKuch");
+      alert(au);
+      //$("#exampleInputEmail1").html(au);
+      $("#email").val(au).prop("readonly",true);
+    }
+    setActiveUser();
+
+
+
+        //doSearch();//calling
+
+       /* $("#email").blur(function()
+        {
+          var emailku=$(this).val();
+          var obj={
+            type:"get",
+            url:"/chk-email3",
+            data:{
+              kuchEmail:emailku
+            }
+          }
+
+          $.ajax(obj).done(function(respKuch){
+            alert(respKuch);
+            $("#res").html(respKuch);
+          }).fail(function(errKuch)
+          {
+            alert(errKuch)
+           $("#res").html(errKuch);// Error might exist here
+          })
+        });*/
+
+
+        $("#BtnSearch").click(doSearch);
+
+        function doSearch()
+        {
+             //  alert();    
+            var emailKu=$("#email").val();
+            var obj={
+                type:"get",
+                url:"/do-search-needy",
+                data:{
+                  kuchEmail:emailKu
+                }
+            }
+
+            $.ajax(obj).done(function(respJSONKuch)
+            {
+                alert(JSON.stringify(respJSONKuch));//:-)
+                //$("#res").html(respKuch);
+                $("#Name").val(respJSONKuch[0].name);
+                $("#number").val(respJSONKuch[0].Contact);
+                $("#address").val(respJSONKuch[0].Address);
+                $("#city").val(respJSONKuch[0].City);
+                $("#imgPrev").prop("src","uploads/"+respJSONKuch[0].ID_proof);
+
+                $("#gender").val(respJSONKuch[0].Gender);
+                $("#Dob").val(respJSONKuch[0].DOB);
+            }).fail(function(errKuch){
+                 alert(errKuch)
+                  $("#res").html(respKuch);
+            })
+          }
+        
+      })
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <img src="MyPics/istockphoto-952033838-612x612.jpg" height="30px" width="30px" style="border-radius: 50%; border-style: groove; border-color: brown;" alt="">
+            <a class="navbar-brand" style="font-family: cursive; color: rgb(69, 21, 21);" href="#"><i>CommunityCare Connect</i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index2.html">Home</a>
+              </li>
+             
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    <br>
+    <center>
+        
+        <div style="height: 40px;  color: brown; font-family: cursive; display: flex; justify-content: center; gap: 10px;">
+            <h2><b>Enter Your Details <i class="fa-solid fa-user" style="color: brown;"></i></b></h2>
+            </div>
+    </center>
+    <form method="post" enctype="multipart/form-data">
+      <div id="container">
+        <div id="email_align">
+          <div>
+        <div class="mb-3" style="width: 500px; margin: 20px 30px 20px 155px; float: left;">
+          <label for="email" class="form-label">Email address</label><span id="res">*</span>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="ProEmail">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div></div>
+        <button type="button" id="BtnSearch" style="height: fit-content; margin-top: 53px;" class="btn btn-primary">Search</button></div>
+        <div id="N-C_id">
+        <div class="mb-3" style="width: 450px; margin: 20px 30px 20px 100px; ">
+          <label for="exampleInputPassword1" class="form-label">Name</label>
+          <input type="text" class="form-control" id="Name" name="ProName">
+        </div>
+        <div class="mb-3" style="width: 350px; margin: 20px 30px 20px 100px; ">
+            <label for="exampleInputPassword1" class="form-label">Contact number</label>
+            <input type="text" class="form-control" id="number"  name="ProPhone">
+          </div>
+        </div>
+        <div id="N-C_id">
+          <div class="mb-3" style="width: 450px; margin: 20px 30px 20px 100px; ">
+            <label for="exampleInputPassword1" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="ProAdd">
+          </div>
+          <div class="mb-3" style="width: 350px; margin: 20px 30px 20px 100px; ">
+              <label for="exampleInputPassword1" class="form-label">City</label>
+              <select class="form-select" id="city" aria-label="Default select example" name="ProCity">
+                <option selected>Open this select menu</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Udaipur">Udaipur</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Ahemdabad">Ahemdabad</option>
+                <option value="Hydrabad">Hydrabad</option>
+                <option value="Amritsar">Amritsar</option>
+                <option value="Patiala">Patiala</option>
+                <option value="Chd.">Chandigarh</option>
+                <option value="Bathinda">Bathinda</option>
+                <option value="Pune">Pune</option>
+                <option value="Agra">Agra</option>
+                <option value="Puducherry">Puducherry</option>
+                <option value="Surat">Surat</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="Patna">Patna</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Ludhiana">Ludhiana</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+          </div>
+          
+          <div style="width: 200px;margin-top: 22px; margin-left: 150px;">
+            <label for="exampleInputPassword1" class="form-label">Gender</label>
+          <select class="form-select" aria-label="Default select example" id="gender" name="ProSex">
+            <option selected>Open this select menu</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="LGBTQ">Others</option>
+          </select>
+        </div>
+
+            <div style="display: flexbox; flex-direction: row; width: 200px;margin-top: 22px; margin-left: 150px;">
+              <label for="Dob" class="form-label">Enter D.O.B</label>
+              <div style="display: flex; justify-content: space-around;">
+                <input type="date" class="form-control" id="Dob" name="dob">
+            </div>
+          </div>
+          
+          <div id="D-G_id">
+            
+            
+          <div style="width: 300px; margin-left:155px ; margin-top: 22px;">
+            <label for="exampleInputPassword1" class="form-label">Upload Your Aadhar Card</label>
+            <input type="file" onchange="doPrev(this,imgPrev)" class="form-control" id="img" name="ppic2">
+        </div>
+        <div style="height: 200px; width: 150px; margin: 55px 20px 15px 150px;">
+          <img src="" id="imgPrev" alt="" width="100" height="100">
+        </div>
+        </div>
+        <center>
+        <div style="display: flex;  flex-direction: row; justify-content: center; gap: 20px;">
+          <button type="submit" class="btn btn-primary" formaction="/profile-needy-process">Sign-in</button>
+          <button type="submit" class="btn btn-primary" formaction="/Update-needy-Account">Update</button>
+          
+         
+        </div><br><br>
+      </center>
+      </div>
+
+      </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+body{
+    background-image: url(../my_pics/BG_IMAGES_9.jpg);
+    background-size: cover;
+
+}
+*{
+    margin: 0px;
+}
+#main-div
+{
+    width: 400px;
+    height: 500px;
+    background-color: antiquewhite;
+    margin: auto;
+    margin-top: 5%;
+    box-shadow: 0px 0px 15px 5px yellowgreen;
+    padding:5px;
+    display: none;
+}
+#cross
+{
+
+    height: 30px;
+    width: 30px;
+    float: right;
+    background-image: url(../my_pics/cross_2.avif);
+    background-size: contain;
+    padding: 0px;
+    border-radius: 50%;
+    transition: ease all 0.1s;
+}
+#cross:hover
+{
+    transform: scale(1.2,1.2);
+    transition: ease all 0.1s;
+}
+.submit{
+    background-color:whitesmoke;
+    border-radius: 40px;
+    border:0px;
+    height: 30px;
+    width: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+    color: rgb(25, 72, 28);
+    font-weight: bold;
+    margin-top: 10px;
+    box-shadow: 3px 3px 2px 1px yellowgreen ;
+    float:right;
+}
+#submit{
+    cursor: pointer;
+    transition: ease all 0.1s;
+}
+#submit:hover
+{
+    transform: scale(1.2,1.2);
+    transition: ease all 0.1s;
+}
+
+#user
+{
+    width: 150px; height: 150px;
+    background-image: url(../my_pics/2019400.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    margin-top: 30px;   
+    cursor: pointer;
+    transition: ease all 0.1s;
+}
+#user:hover
+{
+    transform: scale(1.2,1.2);
+    transition: ease all 0.1s;
+}
+input[type="email"],input[type="password"],input[type="text"]
+{
+    width: 80%;
+    line-height: 30px;
+    font-size: small;
+    color:darkslategrey;
+    text-align: center;
+    border: 0px;
+    border-bottom: 3px yellowgreen solid;
+    box-shadow: 3px 3px 3px  yellowgreen;
+    border-radius: 40px;
+    outline: none;
+}
+input[type="email"]:focus
+{ 
+    background-color:rgb(240, 255, 76);
+    transition: ease all 0.1s;
+}
+input[type="password"]:focus
+{
+    background-color:rgb(240, 255, 76);
+    transition: ease all 0.1s;
+}
+input[type="text"]:focus
+{
+    background-color:rgb(240, 255, 76);
+    transition: ease all 0.1s;
+}
+label{
+    color: darkgreen;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

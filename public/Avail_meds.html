@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>available_medicines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        body
+        {
+            background-color: bisque;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+        $("#submitBtn").click(function(){
+
+         var email= $("#email").val();
+         var Med_name= $("#medname").val();
+         var Exp_dt= $("#date").val();
+         var pack_type= $("#packing").val();
+         var qty= $("#num").val();
+
+
+        var obj_med={
+              url: "/insert-data",
+              type:"get",
+              
+              data:{
+              email_val: email,
+              Med_name_val:Med_name,
+               Exp_dt_val: Exp_dt,
+               pack_type_val: pack_type,
+              qty_val: qty,
+   
+               }
+              }
+              
+              $.ajax(obj_med).done(function(resp){
+            $("#signal123").html(resp);
+          }).fail(function(err){
+            $("#signal123").html("ERROR AA GYI SORRY",err); 
+          })
+
+
+  
+
+});
+function setActiveUser()
+    {
+      var au=localStorage.getItem("activeKuch");
+      // alert(au);
+      $("#email").val(au).prop("readonly",true);
+    }
+    setActiveUser();
+});
+
+    </script>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="font-family: cursive; color: rgb(69, 21, 21);" href="#"><i>CommunityCare Connect</i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index2.html">Home</a>
+              </li>
+             
+            </ul>
+            
+          </div>
+        </div>
+      </nav><br>
+
+      <center>
+        <div style="height: 40px;  color: brown; font-family: cursive;">
+        <h2>Add Medicines Available <i class="fa-solid fa-house-medical" style="color: brown;"></i></h2>
+        </div>
+        </center><br>
+        <center>
+        <form method="post" action="signup-process-secure" enctype="multipart/form-data"><!--Badlaav aya hai is line me (get->post)  enctype is for file uploading-->
+            <div class="mb-3" style="width: 300px;">
+              <label for="email" class="form-label">Email address:</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="EmailTxt">
+            </div>
+            <div class="mb-3" style="width: 300px;">
+              <label for="medname" class="form-label">Medicine Name:</label>
+              <input type="text" class="form-control" id="medname" name="MedName">
+            </div>
+             
+              
+            <div class="mb-3" style="width: 300px;">
+                  <label for="date" class="form-label">Expiry date:</label> 
+                  <input type="date" class="form-control" id="date" name="Expdate">
+            </div>
+
+            <div class="mb-3" style="width: 300px;">
+                <label for="packing" class="form-label">Packing</label> 
+                <select class="form-select" id="packing" aria-label="Default select example" name="packing">
+                    <option selected>Open this select menu</option>
+                    <option value="Vials">Vials</option>
+                    <option value="Bottles">Bottles</option>
+                    <option value="Blister packs">Blister packs</option>
+                    <option value="Sachets">Sachets</option>
+                    <option value="Syringes">Syringes</option>
+                    <option value="Ampoules">Ampoules</option>
+                  </select>
+          </div>
+
+          <div class="mb-3" style="width: 300px;">
+            <label for="num" class="form-label">Quantity</label> 
+            <input type="number" class="form-control" id="num" name="Quantity">
+        </div>
+
+      <hr>
+          <span id="signal123">*</span>
+      <hr>
+              <div class="col-md-6 form-floating" style="margin-left: 20px;margin-top: 10px;  width: max-content; margin-left: 495px; margin-right: 20px;">
+                
+                <input type="button" class="btn btn-secondary" id="submitBtn" value="Submit">
+
+              </div><br>
+              
+          </form>
+        </center>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
