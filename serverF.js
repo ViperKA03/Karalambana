@@ -2,6 +2,7 @@ var express=require("express");
 var fileuploader=require("express-fileupload");
 var mysql=require("mysql2")
 var app=express();
+require('dotenv').config();
 
 app.listen(2099,function()
 {
@@ -17,13 +18,13 @@ app.get("/",function(req,resp)
 });
 
 app.use(express.urlencoded(true));
-
+    
 var CCC={
 
-    host:"127.0.0.7",
-    user:"root",
-    password:"Bhavish@2010",
-    database:"CommunityCare",
+    host:process.env.HOST,
+    user:process.env.USER,
+    password:process.env.PASSWORD,
+    database:process.env.DB,
     dateStrings:true
 }
 

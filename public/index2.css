@@ -1,0 +1,205 @@
+/* Define CSS Variables */
+:root {
+    --primary-color: #4a90e2;
+    --primary-dark: #357ab7;
+    --background-color: #f0f4f8;
+    --text-color: #333;
+    --card-background: #e0f7fa;
+    --card-hover-shadow: rgba(74, 144, 226, 0.6);
+}
+
+/* Global Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Sign Up and Login Button Styles */
+nav .auth-buttons {
+    margin-left: auto;
+}
+
+nav .auth-buttons a {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+nav .auth-buttons a:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Main Content Styles */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Hover effect */
+.card:hover {
+    box-shadow: 0 8px 16px var(--card-hover-shadow);
+    transform: translateY(-5px);
+}
+
+/* Typography Styles */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+p {
+    color: #555;
+    font-weight: 400;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Override Bootstrap modal styles */
+
+/* Modal Background */
+.modal-content {
+    background: #ffffff; /* Clean white background */
+    border-radius: 12px; /* Rounded corners for a modern look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Modal Hover Effect */
+.modal-content:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow */
+    transform: scale(1.02); /* Gentle zoom effect */
+}
+
+/* Modal Header */
+.modal-header {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Soft blue gradient */
+    border-bottom: 1px solid #90caf9; /* Light blue border */
+    padding: 20px; /* Adequate padding */
+}
+
+.modal-title {
+    color: #0277bd; /* Deep blue for contrast */
+    font-weight: 700; /* Bold title */
+    font-size: 1.5rem; /* Larger title for emphasis */
+}
+
+/* Close Button */
+.btn-close {
+    color: #0288d1; /* Bright blue for the close button */
+    font-size: 1.2rem; /* Larger for better visibility */
+}
+
+.btn-close:hover {
+    color: #01579b; /* Darker blue on hover */
+}
+
+/* Modal Body */
+.modal-body {
+    color: #333; /* Dark grey text for readability */
+    padding: 20px; /* Padding for content spacing */
+    font-size: 1rem; /* Standard font size */
+}
+
+/* Modal Footer */
+.modal-footer {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Soft blue gradient */
+    border-top: 1px solid #90caf9; /* Light blue border */
+    padding: 15px; /* Consistent padding */
+}
+
+/* Footer Buttons */
+.modal-footer .btn-primary {
+    background-color: #29b6f6; /* Vibrant light blue */
+    border: none;
+    color: white;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Adequate padding */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0288d1; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.modal-footer .btn-secondary {
+    background-color: #90a4ae; /* Soft grey-blue */
+    border: none;
+    color: white;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Adequate padding */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #78909c; /* Slightly darker grey-blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Modal Backdrop */
+.modal-backdrop.show {
+    background-color: rgba(0, 0, 0, 0.4); /* Soft, semi-transparent black */
+}
