@@ -4,7 +4,7 @@ var mysql=require("mysql2")
 var app=express();
 require('dotenv').config();
 
-app.listen(2099,function()
+app.listen(process.env.PORT||2099,function()
 {
     console.log("Server has started...!!");
 })
